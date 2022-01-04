@@ -29,11 +29,12 @@ jobs:
 
     - name: Copy file via ssh key to deploy 🚀
       uses: appleboy/scp-action@master
-      with:
+      env:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
         passphrase: ${{ secrets.PASSPHRASE }}
         port: ${{ secrets.PORT }}
-        source: "build/*"
-        target: "tuandv"
+      with:
+        source: "build"
+        target: "/root/tuandv"
