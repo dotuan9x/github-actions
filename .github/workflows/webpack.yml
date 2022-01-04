@@ -27,5 +27,13 @@ jobs:
         npm install
         npm run build
 
-    - name: Deploy 🚀
-      run: echo hello
+    - name: Copy file via ssh key to deploy 🚀
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
+        port: ${{ secrets.PORT }}
+        source: "build/*"
+        target: "tuandv"
