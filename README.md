@@ -1,5 +1,11 @@
 # GitHub Actions for Create React App
 
+### Tạo và sử dụng github actions
+Trong folder repository của dự án, ta tạo folder `.github/workflows/`
+
+Tiếp đó ta tạo file `.yml` bất kỳ, ví dụ `qc.yml` để cấu hình [github actions](https://docs.github.com/en/actions/using-workflows/about-workflows#create-an-example-workflow) deploy lên môi trường qc
+
+
 ### Sự kiện trigger workflow
 
 ```shell
@@ -25,6 +31,12 @@ on:
     types: # This configuration does not affect the page_build event above
       - created
 
+# Kích hoạt workflow khi đánh tags với prefix qc.*
+on:
+  push:
+    tags:
+      - qc.*
+        
 # Tạo schedule để kích hoạt workflow => https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#schedule       
 ```
 
